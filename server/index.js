@@ -8,8 +8,7 @@ const app = express();
 dotenv.config();
 connectDB();
 
-const cors = require("cors");
-app.use(cors({ origin: "https://todo-app-q4uh.vercel.app" }));
+app.use(cors());
 app.use(express.json());
 app.use("/api", router);
 
