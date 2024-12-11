@@ -2,13 +2,14 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./utils/db");
 const router = require("./routes");
-const cors = require('cors');
+const cors = require("cors");
 
 const app = express();
 dotenv.config();
 connectDB();
 
-app.use(cors());
+const cors = require("cors");
+app.use(cors({ origin: "https://todo-app-q4uh.vercel.app" }));
 app.use(express.json());
 app.use("/api", router);
 
