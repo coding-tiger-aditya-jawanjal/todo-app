@@ -8,7 +8,9 @@ const Tasks = () => {
   const { isTaskChanged } = useTask();
 
   const fetchTasks = async () => {
-    const res = await fetch(BACKEND_URL);
+    const res = await fetch(BACKEND_URL, {
+      mode: "no-cors",
+    });
     const data = await res.json();
 
     if (data) {
