@@ -1,0 +1,17 @@
+meta {
+  name: Delete Task
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://localhost:5000/api/task/6756729c6bd5e95e3016b6b5
+  body: none
+  auth: none
+}
+
+body:json {
+  {
+    "task":"Learn MERN Stack from Mindstay."
+  }
+}

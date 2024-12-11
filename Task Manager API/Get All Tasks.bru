@@ -1,0 +1,17 @@
+meta {
+  name: Get All Tasks
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:5000/api/task
+  body: none
+  auth: none
+}
+
+body:json {
+  {
+    "task":"Iron Clothes."
+  }
+}

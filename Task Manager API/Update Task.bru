@@ -1,0 +1,17 @@
+meta {
+  name: Update Task
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:5000/api/task/6757d7d96f7ac46fbda2fd5a
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "complete":true
+  }
+}

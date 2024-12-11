@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 700px;
+}
+
+.app {
+  min-height: 100dvh;
+  background: rgb(61, 73, 79);
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  font-size: 2rem;
+}
+
+input[type="text"] {
+  padding: 0px 10px;
+  height: 50px;
+  width: 80%;
+  font-size: 1.5rem;
+  outline: none;
+  border-radius: 5px;
+}
+
+button {
+  width: 20%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  background: rgb(110, 110, 171);
+  color: whitesmoke;
+  border-radius: 5px;
+  border: none;
+}
+
+button:hover {
+  scale: 105%;
+  transition: all ease-in-out 300ms;
+}
+
+.tasks {
+  background-color: rgb(216, 214, 214);
+  color: black;
+  padding: 20px 30px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.single-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.icons span:nth-child(1) {
+  color: blue;
+}
+
+.icons span:nth-child(2) {
+  color: red;
+}
+
+.icons span:nth-child(1):hover,
+.icons span:nth-child(2):hover {
+  scale: 125%;
+  transition: all ease-in-out 300ms;
+}
+
+.null-msg {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: rgb(77, 77, 79);
+}
