@@ -9,12 +9,15 @@ const SingleTask = ({ title, id, completed, i }) => {
     useTask();
 
   const deleteTask = async () => {
-    const res = await fetch(`/api/task/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://todo-app-backend-omega-three.vercel.app/api/task/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     toast.warning(data.msg, {
       position: "top-center",
