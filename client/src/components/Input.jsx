@@ -18,7 +18,6 @@ const Input = () => {
   const addTask = async () => {
     const res = await fetch(BACKEND_URL, {
       method: "POST",
-      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -45,7 +44,6 @@ const Input = () => {
   const updateTask = async () => {
     const res = await fetch(`${BACKEND_URL}/${updateId}`, {
       method: "PUT",
-      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
       },

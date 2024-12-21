@@ -11,7 +11,6 @@ const SingleTask = ({ title, id, completed, i }) => {
   const deleteTask = async () => {
     const res = await fetch(`${BACKEND_URL}/${id}`, {
       method: "DELETE",
-      mode:'no-cors',
       headers: {
         "Content-Type": "application/json",
       },
