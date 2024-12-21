@@ -9,7 +9,7 @@ const SingleTask = ({ title, id, completed, i }) => {
     useTask();
 
   const deleteTask = async () => {
-    const res = await fetch(`${BACKEND_URL}/task/${id}`, {
+    const res = await fetch(`/api/task/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

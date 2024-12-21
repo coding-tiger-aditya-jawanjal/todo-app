@@ -8,7 +8,7 @@ const Tasks = () => {
   const { isTaskChanged } = useTask();
 
   const fetchTasks = async () => {
-    const res = await fetch(BACKEND_URL+'/task');
+    const res = await fetch('/api/task');
     const data = await res.json();
 
     if (data) {

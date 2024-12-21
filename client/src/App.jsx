@@ -7,7 +7,7 @@ const App = () => {
   const [url, setUrl] = useState("");
 
   const fetchImg = async () => {
-    const res = await fetch(BACKEND_URL+'/pic');
+    const res = await fetch('/api/pic');
     const data = await res.json();
     setUrl(data.picUrl);
   };
