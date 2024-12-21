@@ -8,7 +8,13 @@ const app = express();
 dotenv.config();
 connectDB();
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://todo-app-frontend-alpha.vercel.app",
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api", router);
 
