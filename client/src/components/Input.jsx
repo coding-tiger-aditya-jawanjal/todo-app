@@ -16,7 +16,7 @@ const Input = () => {
   } = useTask();
 
   const addTask = async () => {
-    const res = await fetch(BACKEND_URL, {
+    const res = await fetch(BACKEND_URL + '/task', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const Input = () => {
   };
 
   const updateTask = async () => {
-    const res = await fetch(`${BACKEND_URL}/${updateId}`, {
+    const res = await fetch(`${BACKEND_URL}/task/${updateId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
