@@ -1,4 +1,5 @@
 const Task = require("../models/task-model");
+const User = require("../models/user-model");
 
 exports.addTask = async (req, res) => {
   try {
@@ -19,7 +20,17 @@ exports.addTask = async (req, res) => {
       return res.status(400).json({ msg: "Error in saving task !" });
     }
 
-    res.status(201).json({ msg: "Task Created !", savedTask });
+    const updateTaskInUser = await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        $push: { tasks: savedTask._id },
+      },
+      { new: true }
+    );
+
+    res
+      .status(201)
+      .json({ msg: "Task Created !", savedTask, updateTaskInUser });
   } catch (error) {
     res.status(500).json({ msg: "Error in addTask !", err: error.message });
   }

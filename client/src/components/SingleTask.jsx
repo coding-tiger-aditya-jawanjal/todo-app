@@ -10,7 +10,7 @@ const SingleTask = ({ title, id, completed, i }) => {
 
   const deleteTask = async () => {
     const res = await fetch(
-      `https://todo-app-backend-omega-three.vercel.app/api/task/${id}`,
+      `${BACKEND_URL}/${id}`,
       {
         method: "DELETE",
         headers: {

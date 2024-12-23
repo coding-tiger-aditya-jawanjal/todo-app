@@ -7,7 +7,7 @@ const App = () => {
   const [url, setUrl] = useState("");
 
   const fetchImg = async () => {
-    const res = await fetch("https://todo-app-backend-omega-three.vercel.app/api/pic");
+    const res = await fetch("http://localhost:5000/api/pic");
     const data = await res.json();
     setUrl(data.picUrl);
   };

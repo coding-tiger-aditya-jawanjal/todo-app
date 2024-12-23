@@ -6,7 +6,7 @@ import TaskProvider from "./context/TaskProvider.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// export const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+export const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

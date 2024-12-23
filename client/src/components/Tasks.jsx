@@ -8,9 +8,7 @@ const Tasks = () => {
   const { isTaskChanged } = useTask();
 
   const fetchTasks = async () => {
-    const res = await fetch(
-      "https://todo-app-backend-omega-three.vercel.app/api/task"
-    );
+    const res = await fetch(BACKEND_URL);
     const data = await res.json();
 
     if (data) {

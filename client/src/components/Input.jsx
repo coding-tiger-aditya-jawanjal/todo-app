@@ -16,18 +16,15 @@ const Input = () => {
   } = useTask();
 
   const addTask = async () => {
-    const res = await fetch(
-      "https://todo-app-backend-omega-three.vercel.app/api/task",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          task: text,
-        }),
-      }
-    );
+    const res = await fetch(BACKEND_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        task: text,
+      }),
+    });
     const data = await res.json();
     toast.success(data.msg, {
       position: "top-center",
@@ -45,23 +42,20 @@ const Input = () => {
   };
 
   const updateTask = async () => {
-    const res = await fetch(
-      `https://todo-app-backend-omega-three.vercel.app/api/task/${updateId}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body:
-          typeof isDone === "boolean"
-            ? JSON.stringify({
-                complete: isDone,
-              })
-            : JSON.stringify({
-                task: text,
-              }),
-      }
-    );
+    const res = await fetch(`${BACKEND_URL}/${updateId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body:
+        typeof isDone === "boolean"
+          ? JSON.stringify({
+              complete: isDone,
+            })
+          : JSON.stringify({
+              task: text,
+            }),
+    });
     const data = await res.json();
     toast.success(data.msg, {
       position: "top-center",
