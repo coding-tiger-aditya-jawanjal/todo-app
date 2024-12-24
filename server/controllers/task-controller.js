@@ -38,7 +38,15 @@ exports.addTask = async (req, res) => {
 
 exports.getTasks = async (req, res) => {
   try {
-    const tasks = await Task.find().sort({ isCompleted: 1 });
+    const tasks = await Promise.all(
+      req.user.tasks.map(async (taskId) => {
+        const task = await Task.findById(taskId);
+        return task;
+      })
+    );
+
+    tasks.sort((a, b) => a.isCompleted - b.isCompleted);
+
     res.status(200).json({ msg: "All Tasks fetched !", tasks });
   } catch (error) {
     res.status(500).json({ msg: "Error in getTasks !", err: error.message });
@@ -91,7 +99,22 @@ exports.deleteTask = async (req, res) => {
       return res.status(400).json({ msg: "No such task !" });
     }
 
+    const isAuthenticated = req.user.tasks.filter((taskId) => taskId == id);
+
+    if (isAuthenticated.length < 1) {
+      return res
+        .status(400)
+        .json({ msg: "You are not allowed to delete the task !" });
+    }
+
     await Task.findByIdAndDelete(id);
+    await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        $pull: { tasks: id },
+      },
+      { new: true }
+    );
     res.status(201).json({ msg: "task deleted !" });
   } catch (error) {
     res.status(500).json({ msg: "Error in deleteTask !", err: error.message });

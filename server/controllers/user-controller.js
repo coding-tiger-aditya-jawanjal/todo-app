@@ -102,15 +102,21 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.logout = async (req, res) => {
+  try {
+    res.cookie("token", "", {
+      httpOnly: true,
+      secure: false,
+      path: "/",
+      sameSite: "none",
+      expires: new Date(0),
+    });
 
-
-// signup
-// login
-
-// make a auth middleware
+    res.status(200).json({ msg: "You Logged Out !" });
+  } catch (error) {
+    res.status(500).json({ msg: "Error in logout !", err: error.message });
+  }
+};
 
 // add or update profile picture
 // delete the profile picture
-
-// add task
-// delete task
