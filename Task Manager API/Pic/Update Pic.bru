@@ -1,0 +1,15 @@
+meta {
+  name: Update Pic
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:5000/api/pic
+  body: multipartForm
+  auth: none
+}
+
+body:multipart-form {
+  image: @file(D:\Video Editing\Assets\LOGOs\174857.png)
+}

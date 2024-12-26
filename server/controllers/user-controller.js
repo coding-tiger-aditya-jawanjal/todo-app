@@ -118,5 +118,3 @@ exports.logout = async (req, res) => {
   }
 };
 
-// add or update profile picture
-// delete the profile picture
