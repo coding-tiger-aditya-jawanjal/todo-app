@@ -9,15 +9,13 @@ const SingleTask = ({ title, id, completed, i }) => {
     useTask();
 
   const deleteTask = async () => {
-    const res = await fetch(
-      `${BACKEND_URL}/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`${BACKEND_URL}/task/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await res.json();
     toast.warning(data.msg, {
       position: "top-center",

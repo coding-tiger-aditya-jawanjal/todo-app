@@ -16,7 +16,7 @@ const Input = () => {
   } = useTask();
 
   const addTask = async () => {
-    const res = await fetch(BACKEND_URL, {
+    const res = await fetch(BACKEND_URL + "/task", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,6 +24,7 @@ const Input = () => {
       body: JSON.stringify({
         task: text,
       }),
+      credentials: "include",
     });
     const data = await res.json();
     toast.success(data.msg, {
@@ -42,8 +43,9 @@ const Input = () => {
   };
 
   const updateTask = async () => {
-    const res = await fetch(`${BACKEND_URL}/${updateId}`, {
+    const res = await fetch(`${BACKEND_URL}/task/${updateId}`, {
       method: "PUT",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
