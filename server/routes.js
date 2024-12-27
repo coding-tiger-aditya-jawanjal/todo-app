@@ -12,7 +12,12 @@ const {
   updatePic,
 } = require("./controllers/pic-controller");
 const { upload } = require("./middleware/upload");
-const { signup, login, logout } = require("./controllers/user-controller");
+const {
+  signup,
+  login,
+  logout,
+  checkAuth,
+} = require("./controllers/user-controller");
 const { auth } = require("./middleware/auth");
 const router = express.Router();
 
@@ -32,5 +37,6 @@ router.put("/pic", auth, upload.single("image"), updatePic);
 router.post("/user/signup", signup);
 router.post("/user/login", login);
 router.post("/user/logout", auth, logout);
+router.get("/user/auth", auth, checkAuth);
 
 module.exports = router;

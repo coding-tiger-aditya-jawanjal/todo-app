@@ -1,37 +1,47 @@
-import { useEffect, useState } from "react";
-import Input from "./components/Input";
-import Tasks from "./components/Tasks";
-import { BACKEND_URL } from "./main";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Auth from "./pages/Auth";
+import Home from "./pages/Home";
+import PublicRoute from "./pages/PublicRoute";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 const App = () => {
-  const [url, setUrl] = useState("");
-
-  const fetchImg = async () => {
-    const res = await fetch(BACKEND_URL + "/pic", {
-      credentials: "include",
-    });
-    const data = await res.json();
-    setUrl(data.picUrl);
-  };
-
-  useEffect(() => {
-    fetchImg();
-  }, []);
-
   return (
     <>
-      <div className="profile">
-        <img src={url} alt="cat" id="profile-pic" />
-      </div>
-      <div className="app">
-        <main>
-          <h2 className="title">Task Manager</h2>
-          <Input />
-          <Tasks />
-        </main>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            exact
+            path="/auth"
+            element={
+              <PublicRoute>
+                <Auth />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };
 
 export default App;
+
+/*
+  1. The application will load.
+  2. We will send an api request. 
+   (http://localhost:5000/api/auth)
+  3. We will get the response.
+    (cookies)
+  4. We will get the response in frontend.
+  5. Conditional Routing
+    ( response.ok ? <Home/> : <Auth/>)
+*/
