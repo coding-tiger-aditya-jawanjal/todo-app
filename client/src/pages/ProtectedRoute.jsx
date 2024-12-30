@@ -1,9 +1,10 @@
 import { useTask } from "../context/TaskProvider";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = () => {
   const { isAuthenticated } = useTask();
-  return isAuthenticated ? children : <Navigate to={"/"} />;
+
+  return isAuthenticated ? <Outlet /> : <Navigate to={"/auth"} />;
 };
 
 export default ProtectedRoute;

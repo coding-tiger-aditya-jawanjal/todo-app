@@ -3,30 +3,25 @@ import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import PublicRoute from "./pages/PublicRoute";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import ErrorPage from "./pages/ErrorPage";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route
-            exact
-            path="/auth"
-            element={
-              <PublicRoute>
-                <Auth />
-              </PublicRoute>
-            }
-          />
-          <Route
-            exact
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
+          {/* Protected Route  */}
+          <Route path="/" element={<ProtectedRoute />}>
+            <Route path="" element={<Home />} />
+          </Route>
+
+          {/* Public Route  */}
+          <Route path="/auth" element={<PublicRoute />}>
+            <Route path="" element={<Auth />} />
+          </Route>
+
+          {/* Other Common Route */}
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </>

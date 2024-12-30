@@ -1,9 +1,9 @@
 import { useTask } from "../context/TaskProvider";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
-const PublicRoute = ({ children }) => {
+const PublicRoute = () => {
   const { isAuthenticated } = useTask();
-  return isAuthenticated ? <Navigate to={"/"} /> : children;
+  return isAuthenticated ? <Navigate to={"/"} /> : <Outlet />;
 };
 
 export default PublicRoute;

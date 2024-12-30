@@ -92,14 +92,17 @@ const Input = () => {
   }, [isDone]);
 
   return (
-    <form>
+    <form className="task-form">
       <input
         type="text"
+        className="task-input"
         placeholder="✍️ Add new Task"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button onClick={handleClick}>{update ? "Update" : "Add Task"}</button>
+      <button className="task-button" onClick={handleClick}>
+        {update ? "Update" : "Add Task"}
+      </button>
     </form>
   );
 };

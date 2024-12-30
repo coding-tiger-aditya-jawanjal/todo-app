@@ -8,6 +8,8 @@ body {
   position: relative;
 }
 
+/* Home Page CSS */
+
 main {
   display: flex;
   flex-direction: column;
@@ -28,13 +30,31 @@ main {
   font-size: 3rem;
 }
 
-form {
+.profile {
+  position: absolute;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+#profile-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Input Component CSS  */
+
+.task-form {
   display: flex;
   gap: 10px;
   font-size: 2rem;
 }
 
-input[type="text"] {
+.task-input {
   padding: 0px 10px;
   height: 50px;
   width: 80%;
@@ -43,7 +63,7 @@ input[type="text"] {
   border-radius: 5px;
 }
 
-button {
+.task-button {
   width: 20%;
   font-size: 1.3rem;
   cursor: pointer;
@@ -53,10 +73,12 @@ button {
   border: none;
 }
 
-button:hover {
+.task-button:hover {
   scale: 105%;
   transition: all ease-in-out 300ms;
 }
+
+/* Tasks Page CSS  */
 
 .tasks {
   background-color: rgb(216, 214, 214);
@@ -67,6 +89,13 @@ button:hover {
   flex-direction: column;
   gap: 20px;
 }
+
+.null-msg {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Single Task Page CSS  */
 
 .single-task {
   display: flex;
@@ -98,28 +127,7 @@ button:hover {
   transition: all ease-in-out 300ms;
 }
 
-.null-msg {
-  text-align: center;
-  font-size: 1.2rem;
-}
-
 .completed {
   text-decoration: line-through;
   color: rgb(77, 77, 79);
-}
-
-.profile {
-  position: absolute;
-  width: 100%;
-  padding:10px;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-}
-
-#profile-pic {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  cursor: pointer;
 }
