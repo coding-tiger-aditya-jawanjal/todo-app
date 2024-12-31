@@ -28,7 +28,7 @@ const TaskProvider = ({ children }) => {
 
   useEffect(() => {
     checkAuth();
-  }, []);
+  }, [isAuthenticated]);
 
   return (
     <TaskContext.Provider

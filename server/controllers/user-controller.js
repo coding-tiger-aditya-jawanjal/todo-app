@@ -36,15 +36,11 @@ exports.signup = async (req, res) => {
       expiresIn: "7d",
     });
 
-    console.log(token);
-
     if (!token) {
       return res.status(400).json({ msg: "Error while signing token !" });
     }
 
     res.cookie("token", token, {
-      path: "/",
-      sameSite: "none",
       secure: false,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
@@ -89,8 +85,6 @@ exports.login = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: false,
-      sameSite: "none",
-      path: "/",
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
 

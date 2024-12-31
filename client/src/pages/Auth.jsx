@@ -1,15 +1,40 @@
 import { useState } from "react";
 import "../styles/auth.css";
+import { BACKEND_URL } from "../main.jsx";
+import { useTask } from "../context/TaskProvider.jsx";
 
 const Auth = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const { setIsAuthenticated } = useTask();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(name, email, password);
-    setName('slkfshvlshlvnhk;azn')
+
+    try {
+      const data = await fetch(BACKEND_URL + "/user/signup", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const res = await data.json();
+      if (res?.user) {
+        console.log(res);
+        setIsAuthenticated(true);
+        alert(res.msg);
+        setName("");
+        setEmail("");
+        setPassword("");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
